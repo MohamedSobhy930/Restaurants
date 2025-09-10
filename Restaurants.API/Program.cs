@@ -1,5 +1,9 @@
 
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using Restaurants.Application.Extensions;
+using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Persistence;
 
 namespace Restaurants.API
@@ -17,8 +21,8 @@ namespace Restaurants.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddDbContext<AppDbContext>
-                (options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDb")));
+            builder.Services.AddApplication();
+            builder.Services.AddInfrastructure(builder.Configuration);
 
             var app = builder.Build();
 
