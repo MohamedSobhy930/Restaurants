@@ -1,7 +1,8 @@
 ﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Restaurants.Application.Behaviors;
 using Restaurants.Application.Restaurants;
-using Restaurants.Application.Restaurants.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,10 @@ namespace Restaurants.Application.Extensions
         public static void AddApplication(this IServiceCollection services)
         {
             var appAssembly = typeof(ServiceCollectionExtensions).Assembly;
-            services.AddScoped<IRestaurantsService, RestaurantsService>();
+            services.AddMediatR(config => config.RegisterServicesFromAssembly(appAssembly));
             services.AddAutoMapper(appAssembly);
             services.AddValidatorsFromAssembly(appAssembly);
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }
     }
 }

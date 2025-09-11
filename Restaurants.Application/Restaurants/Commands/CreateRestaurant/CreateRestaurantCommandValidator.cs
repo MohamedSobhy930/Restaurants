@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Restaurants.Application.Restaurants.Validators
+namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
 {
-    public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantDto>
+    public class UpdateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
     {
-        public CreateRestaurantDtoValidator() 
+        public UpdateRestaurantCommandValidator() 
         {
             RuleFor(x => x.Name)
                 .Length(3, 100);
