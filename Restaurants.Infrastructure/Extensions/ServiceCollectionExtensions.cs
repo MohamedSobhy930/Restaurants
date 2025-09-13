@@ -20,6 +20,7 @@ namespace Restaurants.Infrastructure.Extensions
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
 
             services.AddScoped<IRestaurantsRepo, RestaurantsRepo>();
+            services.AddScoped<IDishesRepo, DishesRepo>();
         }
     }
 }

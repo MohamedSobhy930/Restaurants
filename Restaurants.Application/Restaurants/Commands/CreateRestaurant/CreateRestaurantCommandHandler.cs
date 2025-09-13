@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
 {
-    public class UpdateRestaurantCommandHandler : IRequestHandler<CreateRestaurantCommand, int>
+    public class CreateRestaurantCommandHandler : IRequestHandler<CreateRestaurantCommand, int>
     {
         private IRestaurantsRepo _restaurantsRepo;
-        private ILogger<UpdateRestaurantCommandHandler> _logger;
+        private ILogger<CreateRestaurantCommandHandler> _logger;
         private IMapper _mapper;
-        public UpdateRestaurantCommandHandler(IRestaurantsRepo restaurantsRepo,
-            ILogger<UpdateRestaurantCommandHandler> logger,
+        public CreateRestaurantCommandHandler(IRestaurantsRepo restaurantsRepo,
+            ILogger<CreateRestaurantCommandHandler> logger,
             IMapper mapper)
         {
             _restaurantsRepo = restaurantsRepo;
