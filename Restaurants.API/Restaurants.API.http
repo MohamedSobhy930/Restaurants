@@ -1,6 +1,22 @@
-@Restaurants.API_HostAddress = http://localhost:5139
+@host = http://localhost
+@port = 5139
 
 GET {{Restaurants.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+GET {{Restaurants.API_HostAddress}}/api/restaurants
+###
+GET {{Restaurants.API_HostAddress}}/api/identity/login
+Accept: application/json
+{
+  email:"test@test.com"
+  password:"Test123$"
+}
+###
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-type: application/json
+{
+  email:"test1@test.com"
+  password:"Test123$"
+}

@@ -1,13 +1,16 @@
 
-using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
+using Restaurants.API.Middlewares;
 using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Persistence;
+using Restraurants.Domain.Entities;
 using Serilog;
 using Serilog.Events;
-using Restaurants.API.Middlewares;
 
 namespace Restaurants.API
 {
@@ -18,7 +21,30 @@ namespace Restaurants.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddEndpointsApiExplorer();
 
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "Bearer",
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    { 
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                             Type = ReferenceType.SecurityScheme, Id = "Bearer"
+                            }
+                        },
+                    []
+                    }
+                });
+            });
+            builder.Services.AddAuthentication();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
@@ -47,6 +73,9 @@ namespace Restaurants.API
             }
             app.UseHttpsRedirection();
 
+            app.MapGroup("/api/identity")
+                .WithTags("Identity")
+                .MapIdentityApi<User>();
             app.UseAuthorization();
 
 

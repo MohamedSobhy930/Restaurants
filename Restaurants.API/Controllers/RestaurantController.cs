@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants;
@@ -14,6 +15,7 @@ namespace Restaurants.API.Controllers
 {
     [Route("api/restaurants")]
     [ApiController]
+    //[Authorize]
     public class RestaurantController : ControllerBase
     {
         private IMediator _mediator;

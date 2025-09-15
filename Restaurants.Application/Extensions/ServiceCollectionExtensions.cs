@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Restaurants.Application.Behaviors;
 using Restaurants.Application.Restaurants;
+using Restaurants.Application.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace Restaurants.Application.Extensions
             services.AddMediatR(config => config.RegisterServicesFromAssembly(appAssembly));
             services.AddAutoMapper(appAssembly);
             services.AddValidatorsFromAssembly(appAssembly);
+            services.AddScoped<IUserContext , UserContext>();
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         }
     }
