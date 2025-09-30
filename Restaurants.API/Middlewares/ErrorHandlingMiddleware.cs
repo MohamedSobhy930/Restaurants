@@ -1,4 +1,6 @@
 ﻿
+using Restraurants.Domain.Exceptions;
+
 namespace Restaurants.API.Middlewares
 {
     public class ErrorHandlingMiddleware : IMiddleware
@@ -15,12 +17,17 @@ namespace Restaurants.API.Middlewares
             {
                 await next.Invoke(context);
             }
+            catch(ForbidException)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync("access forbidden");
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex , ex.Message);
 
                 context.Response.StatusCode = 500;
-                await context.Response.WriteAsync("Bazet Khaleeees");
+                await context.Response.WriteAsync("bos 3la el log file");
             }
         }
     }

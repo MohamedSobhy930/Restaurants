@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Restaurants.Application.Restaurants.DTOs;
+using Restaurants.Application.Users;
 using Restaurants.Domain.IRepos;
 using Restraurants.Domain.Entities;
 using System;
@@ -17,18 +19,22 @@ namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
         private IRestaurantsRepo _restaurantsRepo;
         private ILogger<CreateRestaurantCommandHandler> _logger;
         private IMapper _mapper;
+        private IUserContext _usercontext;
         public CreateRestaurantCommandHandler(IRestaurantsRepo restaurantsRepo,
             ILogger<CreateRestaurantCommandHandler> logger,
-            IMapper mapper)
+            IMapper mapper, IUserContext usercontext)
         {
             _restaurantsRepo = restaurantsRepo;
             _logger = logger;
             _mapper = mapper;
+            _usercontext = usercontext;
         }
         public async Task<int> Handle(CreateRestaurantCommand request, CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Create a new Restaurant{@Restaurant}" , request);
+            var user = _usercontext.GetCurrentUser();
+            _logger.LogInformation("{userEmail} is Creating a new Restaurant{@Restaurant}" ,user.Email, request);
             var restaurant = _mapper.Map<Restaurant>(request);
+            restaurant.OwnerId = user.Id;
             int id = await _restaurantsRepo.Create(restaurant);
             return id;
         }

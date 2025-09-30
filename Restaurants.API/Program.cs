@@ -25,26 +25,50 @@ namespace Restaurants.API
 
             builder.Services.AddSwaggerGen(c =>
             {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "Restaurants API",
+                    Version = "v1",
+                    Description = "API documentation for Restaurants project with JWT auth"
+                });
+
+                // Security Definition (JWT Bearer)
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
-                    Type = SecuritySchemeType.Http,
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Enter: **Bearer {your token}**"
                 });
+
+                // Security Requirement
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    { 
+                    {
                         new OpenApiSecurityScheme
                         {
-                            Reference = new OpenApiReference
+                        Reference = new OpenApiReference
                             {
-                             Type = ReferenceType.SecurityScheme, Id = "Bearer"
-                            }
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                        Scheme = "oauth2",
+                        Name = "Bearer",
+                        In = ParameterLocation.Header,
                         },
-                    []
+                    new List<string>()
                     }
                 });
             });
-            builder.Services.AddAuthentication();
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = IdentityConstants.BearerScheme;
+                options.DefaultChallengeScheme = IdentityConstants.BearerScheme;
+            });
+            builder.Services.AddAuthorization();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddScoped<ErrorHandlingMiddleware>();
@@ -76,6 +100,7 @@ namespace Restaurants.API
             app.MapGroup("/api/identity")
                 .WithTags("Identity")
                 .MapIdentityApi<User>();
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

@@ -1,22 +1,49 @@
 @host = http://localhost
 @port = 5139
+@token = CfDJ8OwA7ffdXhlBktq22kF0NBhVIn82_HQ_MBw0dHCrMQJAanQhZFL5_b7xWa8llKQYPJDDXSqRX0-juiSnaHxjCQ6qH1XoLVUZe2Jh3d6T1nAMCDfv8olepiy9y7aQyCUNA9yJKPVF3zsbwIXH3eb2_GvM2douu2ffFsumiWmGRU68_HEK8-IpNQHK7w7DCjwdkyBYq7Fl-gjcZ8D7ILWhhRi3d-SeVBMSrRKM1P6eRfUSzl2EvlThXj248l5eGaXj1lqys6sxR6mElc4FzmVacIqDOKh_cOvyiQ5jx73otmZCqnGsZjpm6dzmHQxzwJl9PFafU-KivYBF49VPJtLYh60OKyi1aekfqAr-HBtWR3yU1n3IpF5pBnmnaQRz57AQrJMR3c67QhWUL_kZUqXRjx3TcNISDeIBtZmLRAhT8QnKLnveFxRf5P47EiFc2UOBJyxHs--gS8QvkGByzZ1MtcKEJV9HwFFDTTNthNWhdYaaXAM8LCgDkE5MomkelxK82E7bShndQXQxGY6AiV2Vu4Ts8CtYv0wevo3qI4saLKZyOvQZmtrIUZzx_zqe5ezcnsazVpMX-QwUcOaNrP7Q5hGj-2fdt3mVG1PVD575JD3oY0s4P4fbmOr8XhpcRBEDFfCn8ZdGzLVfH2Y6dk8065j8oDgOYQ2_4bAYMsJeZ3p45NcRoU04P_B6f_Pr-A7lHNQmXzz4HuSQb8QOJw1T0zvTbJiiXmnFXZL9ejAMEuEBuzb-0APFl8rt7aW2PlbWSkqA-HzzZWX1XhJcIk251cq1GlCFJXJPBFCgTb4AQiDMh8eIOQhk4mYa5P5353sNE9UFSOKMru_My2xRsWTSpMwjOPcONrxV13q_NIPAJzfn0f4oMBJ5OXOizv0OCAuOXA
 
 GET {{Restaurants.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
-GET {{Restaurants.API_HostAddress}}/api/restaurants
+GET http://localhost:5139/api/restaurants
+Authorization : Bearer CfDJ8OwA7ffdXhlBktq22kF0NBhysQ73E2j5d9l2OcaYjLgtdv7kDRhza1kX2xJQJjr9Ow3Bwyd6BO1xakTYF00jphgUPdiDHbMoyDhnPeI-njd1yxEJj2yGwnZN5sQio7YfEEDhKbJHyb8mFFz-5OoWum80YWCsBgxdRy5SZf6_9_UiCLK0TJncxBddowz7FQH96sKL4uwZcyl9EdShkhNA6i1XT4DQfxY2wy369pBRX_hlYQPyC3G1zxj_ka5qr9OTcyuiWQgEvpY3A1zKQExph1LbQFjlx0EzMvMgba_sNYY9c0CGeKWU4mBxtWe88Sox1gtkF1TKh5L0pN4cVYYJbEE6F5gaNsr6N0_VJt8_qAz4G0Yhel_ZTyXRUtNoVpo_jkUz0KPUlUVu3KkqP_mlSfe0t2gGoxDxAFZDoVgAvkBUxnlfIsOHicKDghBHdzDJm5dp7FWrd8AZD_ASs_TJ8ui-iPlJCmCPqvgdteaRII1arKzDy5yzUfi3G5dkfRfHK7y2lZ8KBKfukXfj8Vq62yRUoH9si831q4a1xZmiZ_2ID3cxYXG_ZLGMSUMQaZYz45QCDlzJh-7EJ_2Hwq-mf5RBJBz8VFxQjmNjlQQ5Dce0aQ47vdgtO18V8K3L6iJz9WuaTG6Ej9UCz1OBhQdsu_YraSdgm8YwU4kizngZaFySMdf3HEMXs1VHErbCgcaJoyKMmihDTs5YUCWwej7_VZJyMC31pIi5CyMKXy9mItHILNHx0VtQ4AubYKdBnQPdWpXYAfPE3p1h99iroEefSNTv6FfSP2rdsA1rGLuUIDJ_hizfHUE9fxUByb_9GpAEWypv0LNdFTUXscEJJbbyXkMhrHlCTEttDIDJhCIPOo87e3BKY1VxgPaO-cQZj5iHWQ
 ###
-GET {{Restaurants.API_HostAddress}}/api/identity/login
-Accept: application/json
-{
-  email:"test@test.com"
-  password:"Test123$"
-}
-###
-POST {{Restaurants.API_HostAddress}}/api/identity/register
+POST http://localhost:5139/api/restaurants
+Authorization : Bearer CfDJ8OwA7ffdXhlBktq22kF0NBiS_4wUQ5ju7uB01N3TzIgV9hsdtmpsBdpU4JaFEfd1ZIJuVuIbWb29LPB9v60E7yDb5HCDcs32HtNwOj3DbdmWLeucBeYsRhB4c8tqbEDKutPfezQ9zXl4TaAWFUP7apKVNUfF9SaGHux4z_AbzshGc9lO2bDWkoCfz_ym38bq45qM0D1RTRBlBTO1Nr4OfAjpnt8OrV4s8jLByde2NrNqzdKejaXbxjMhpf24MwaCob4S_RPRjpZVMWTZAtNNHCJi2q3f3PQCqa1VboxgSLS4UR8wXQdwck9BENfi8gTRk9HG5x0NmtuA-uKiBXqe7_EE90JDg07lIfbQrtWHM2k8m4OqK2DGEHBk-xB4IEhEAnyXOna5eZ8ICDc3s9jb1WxdRlrluHknPa93uToV3_bHGOPSmH0esrXGwIofhYszzFDOFvcq1_NePXvz8eG8-vy4lk6iRX0nNdGDrvhP8umr8755QX9vJaX6b33kMphurGkfSrNE4WL-nvBrvK17gNL5vOyNCqXZS3jBXVTJWqwlo0ZYv3WxM8GIx0cUNjiXrPa202vBgVP3uhSogX9or7csZ4y52Z0DpLHDaKwHtVG0Jc0E_NuiszgvzJlJsCt5qUyLitD1L6xw-BkT_06vaT7NXAWhyjzG9mFFWw_vmDdsJfcJON6fKK5NrYANbmoLfWSIBue9iu7n-0u0BRfztzN5eJ5TAZ6l3cVX2BlTZHR9GKtkuDQtiuYfLM5YY2eWFeTmep04bdV3ZB1nON3p-gv1TTqfJjbcb_iWgYROSjHf509uikDxcFQ4u6DrxxWCCYDQS9jSrp6hHPhHKIGwgRJkV6JJ5iRUkfmh4FZlCpJoVpghNIaqpsNN9OTG9uGT4Q
 Content-type: application/json
 {
-  email:"test1@test.com"
-  password:"Test123$"
+  "name": "blabla1",
+  "description": "ss",
+  "category": "w",
+  "hasDelivery": true,
+  "phoneNumber": "01992922212",
+  "contactEmail": "test@test.com",
+  "street": "s",
+  "city": "d",
+  "postalCode": "01-110"
+}
+###
+POST http://localhost:5139/api/identity/login
+Content-type: application/json
+{
+  "email": "admin@test.com",
+  "password": "Admin@123"
+}
+###
+POST http://localhost:5139/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "Owner@test.com",
+  "password": "Owner@123"
+}
+
+
+###
+POST http://localhost:5139/api/identity/register
+Content-type: application/json
+{
+  "email": "Owner@test.com",
+  "password": "Owner@123"
 }

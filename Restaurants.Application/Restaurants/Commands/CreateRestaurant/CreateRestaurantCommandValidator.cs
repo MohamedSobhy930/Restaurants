@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
 {
-    public class UpdateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
+    public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
     {
-        public UpdateRestaurantCommandValidator() 
+        public CreateRestaurantCommandValidator() 
         {
             RuleFor(x => x.Name)
                 .Length(3, 100);
@@ -23,7 +23,7 @@ namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant
             RuleFor(x => x.PhoneNumber)
                 .Matches(@"\d{11}$").WithMessage("Enter a valid Phone number");
             RuleFor(x => x.PostalCode)
-                .Matches(@"^\d{2}-\d{3}$").WithMessage("Enter a valid postal Code (XX-XXX)");
+                .Matches(@"^\d{3}-\d{3}$").WithMessage("Enter a valid postal Code (XX-XXX)");
         }
     }
 }

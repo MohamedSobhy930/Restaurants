@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
@@ -18,5 +19,7 @@ namespace Restraurants.Domain.Entities
         public string ContactEmail { get; set; }
         public Address Address { get; set; }
         public List<Dish> Dishes { get; set; }
+        public User Owner { get; set; } = default!;
+        public string OwnerId { get; set; } = default!;
     }
 }

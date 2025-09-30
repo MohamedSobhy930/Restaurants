@@ -10,12 +10,14 @@ using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
+using Restaurants.Infrastructure.Authorization;
+using Restraurants.Domain.Utilities;
 
 namespace Restaurants.API.Controllers
 {
     [Route("api/restaurants")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class RestaurantController : ControllerBase
     {
         private IMediator _mediator;
@@ -25,6 +27,8 @@ namespace Restaurants.API.Controllers
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(IEnumerable<RestaurantDto>))]
+        //[Authorize(policy: PolicyNames.HasNationality)]
+        [Authorize(policy: PolicyNames.CreatedAtleast2Restaurants)]
         public async Task<IActionResult> GetAll()
         {
             var restaurants =await _mediator.Send(new GetAllRestaurantsQuery());
@@ -54,6 +58,7 @@ namespace Restaurants.API.Controllers
             return NotFound();
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Owner)]
         public async Task<IActionResult> CreateRestaurant(CreateRestaurantCommand restaurant)
         {
             int id = await _mediator.Send(restaurant);

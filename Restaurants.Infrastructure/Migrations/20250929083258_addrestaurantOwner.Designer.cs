@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Restaurants.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using Restaurants.Infrastructure.Persistence;
 namespace Restaurants.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250929083258_addrestaurantOwner")]
+    partial class addrestaurantOwner
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -272,7 +275,7 @@ namespace Restaurants.Infrastructure.Migrations
                             Description = "Authentic Italian pasta dishes",
                             HasDelivery = true,
                             Name = "Pasta Palace",
-                            OwnerId = "ad2e7d38-5ded-4022-89cc-9705cfd6b6e8",
+                            OwnerId = "a6132b21-186c-4357-b353-731300e2cac9",
                             PhoneNumber = "1234567890"
                         });
                 });
