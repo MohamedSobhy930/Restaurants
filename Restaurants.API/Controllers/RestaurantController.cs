@@ -28,10 +28,11 @@ namespace Restaurants.API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(IEnumerable<RestaurantDto>))]
         //[Authorize(policy: PolicyNames.HasNationality)]
-        [Authorize(policy: PolicyNames.CreatedAtleast2Restaurants)]
-        public async Task<IActionResult> GetAll()
+        //[Authorize(policy: PolicyNames.CreatedAtleast2Restaurants)]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAll([FromQuery] GetAllRestaurantsQuery query)
         {
-            var restaurants =await _mediator.Send(new GetAllRestaurantsQuery());
+            var restaurants =await _mediator.Send(query);
             return Ok(restaurants);
         }
         [HttpGet("{id:int}")]

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Restaurants.Application.Common;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Domain.IRepos;
 using System;
@@ -11,25 +12,26 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Application.Restaurants.Queries.GetAllRestaurants
 {
-    public class GetAllRestaurantsQueryHandler : IRequestHandler<GetAllRestaurantsQuery, IEnumerable<RestaurantDto>>
+    public class GetAllRestaurantsQueryHandler(IRestaurantsRepo restaurantsRepo,
+        ILogger<GetAllRestaurantsQueryHandler> logger,
+        IMapper mapper) : IRequestHandler<GetAllRestaurantsQuery, PagedResult<RestaurantDto>>
     {
-        private IRestaurantsRepo _restaurantsRepo;
-        private ILogger<GetAllRestaurantsQueryHandler> _logger;
-        private IMapper _mapper;
-        public GetAllRestaurantsQueryHandler(IRestaurantsRepo restaurantsRepo,
-            ILogger<GetAllRestaurantsQueryHandler> logger,
-            IMapper mapper)
-        {
-            _restaurantsRepo = restaurantsRepo;
-            _logger = logger;
-            _mapper = mapper;
-        }
-        public async Task<IEnumerable<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
+        private IRestaurantsRepo _restaurantsRepo = restaurantsRepo;
+        private ILogger<GetAllRestaurantsQueryHandler> _logger = logger;
+        private IMapper _mapper = mapper;
+
+        public async Task<PagedResult<RestaurantDto>> Handle(GetAllRestaurantsQuery request, CancellationToken cancellationToken)
         {
             _logger.LogInformation($"GetAllRestaurants");
-            var restaurants = await _restaurantsRepo.GetAllAsync();
+            var (restaurants,totalCount) = await _restaurantsRepo
+                .GetAllMatchingAsync(request.SearchPhrase ,
+                request.PageNumber ,
+                request.PageSize,
+                request.SortBy,
+                request.SortDirection);
             var restaurantDtos = _mapper.Map<IEnumerable<RestaurantDto>>(restaurants);
-            return restaurantDtos;
+            var result = new PagedResult<RestaurantDto>(restaurantDtos,totalCount,request.PageNumber, request.PageSize);
+            return result;
         }
     }
 }
