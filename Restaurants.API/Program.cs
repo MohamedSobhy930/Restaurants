@@ -1,20 +1,14 @@
-
-using FluentValidation;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using Restaurants.API.Middlewares;
 using Restaurants.Application.Extensions;
 using Restaurants.Infrastructure.Extensions;
-using Restaurants.Infrastructure.Persistence;
 using Restraurants.Domain.Entities;
 using Serilog;
-using Serilog.Events;
 
 namespace Restaurants.API
 {
-    public class Program
+    public partial class Program
     {
         public static void Main(string[] args)
         {

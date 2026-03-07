@@ -1,16 +1,12 @@
-﻿using FluentValidation;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.Application.Restaurants;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
 using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.DTOs;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
-using Restaurants.Infrastructure.Authorization;
 using Restraurants.Domain.Utilities;
 
 namespace Restaurants.API.Controllers
@@ -27,9 +23,9 @@ namespace Restaurants.API.Controllers
         }
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK ,Type = typeof(IEnumerable<RestaurantDto>))]
+        [AllowAnonymous]
         //[Authorize(policy: PolicyNames.HasNationality)]
         //[Authorize(policy: PolicyNames.CreatedAtleast2Restaurants)]
-        [AllowAnonymous]
         public async Task<IActionResult> GetAll([FromQuery] GetAllRestaurantsQuery query)
         {
             var restaurants =await _mediator.Send(query);

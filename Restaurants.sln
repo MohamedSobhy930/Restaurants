@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36301.6
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11505.172 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.API", "Restaurants.API\Restaurants.API.csproj", "{1DC07823-533B-4E5C-94D6-00D5330C1A90}"
 EndProject
@@ -10,6 +10,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.Application", "Restaurants.Application\Restaurants.Application.csproj", "{66BC406B-E8F1-4DF4-862A-5B95C0EC85E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.Infrastructure", "Restaurants.Infrastructure\Restaurants.Infrastructure.csproj", "{07C33DE5-420B-4C42-87F1-F7F3AE75461D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.ApplicationTests", "Restaurants.ApplicationTests\Restaurants.ApplicationTests.csproj", "{2E21829F-9EE1-40CA-AF87-FAA69A01391B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.InfrastructureTests", "Restaurants.InfrastructureTests\Restaurants.InfrastructureTests.csproj", "{202CBD7E-67FB-46D6-82CE-8885B65CC2ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurants.APITests", "Restaurants.APITests\Restaurants.APITests.csproj", "{93DADA3A-A0A5-495A-838D-3D8DBDA468C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +39,18 @@ Global
 		{07C33DE5-420B-4C42-87F1-F7F3AE75461D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07C33DE5-420B-4C42-87F1-F7F3AE75461D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07C33DE5-420B-4C42-87F1-F7F3AE75461D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E21829F-9EE1-40CA-AF87-FAA69A01391B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E21829F-9EE1-40CA-AF87-FAA69A01391B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E21829F-9EE1-40CA-AF87-FAA69A01391B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E21829F-9EE1-40CA-AF87-FAA69A01391B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{202CBD7E-67FB-46D6-82CE-8885B65CC2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{202CBD7E-67FB-46D6-82CE-8885B65CC2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{202CBD7E-67FB-46D6-82CE-8885B65CC2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{202CBD7E-67FB-46D6-82CE-8885B65CC2ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93DADA3A-A0A5-495A-838D-3D8DBDA468C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DADA3A-A0A5-495A-838D-3D8DBDA468C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DADA3A-A0A5-495A-838D-3D8DBDA468C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DADA3A-A0A5-495A-838D-3D8DBDA468C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,7 +27,7 @@ namespace Restaurants.API.Middlewares
                 _logger.LogError(ex , ex.Message);
 
                 context.Response.StatusCode = 500;
-                await context.Response.WriteAsync("bos 3la el log file");
+                await context.Response.WriteAsync("something went wrong :(");
             }
         }
     }

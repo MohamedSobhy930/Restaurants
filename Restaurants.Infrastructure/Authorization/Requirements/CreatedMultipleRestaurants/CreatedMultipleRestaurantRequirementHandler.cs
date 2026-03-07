@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Restaurants.Infrastructure.Authorization.Requirements.CreatedMultipleRestaurants
 {
-    public class CreatedMultipleRestaurantRequirementHandler(IRestaurantsRepo restaurants,
+    internal class CreatedMultipleRestaurantRequirementHandler(IRestaurantsRepo restaurants,
         IUserContext usercontext) : AuthorizationHandler<CreatedMultipleRestaurantRequirement>
     {
         private IUserContext _usercontext = usercontext;
