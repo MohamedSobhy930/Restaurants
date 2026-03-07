@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Restraurants.Domain\Restraurants.Domain.csproj" />
+    <Folder Include="Restaurants\Validators\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Restaurants\Validators\" />
+    <ProjectReference Include="..\Restraurants.Domain\Restraurants.Domain.csproj" />
   </ItemGroup>
 
 </Project>
